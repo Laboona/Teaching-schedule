@@ -1,0 +1,116 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Oct 25, 2020 at 11:14 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `time_table`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule`
+--
+
+CREATE TABLE `schedule` (
+  `id` int(6) DEFAULT NULL,
+  `name_subject` varchar(30) DEFAULT NULL,
+  `sec` int(3) UNSIGNED ZEROFILL NOT NULL,
+  `room` varchar(5) DEFAULT NULL,
+  `day` enum('จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์') DEFAULT NULL,
+  `time_start` time DEFAULT NULL,
+  `time_stop` time DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`id`, `name_subject`, `sec`, `room`, `day`, `time_start`, `time_stop`) VALUES
+(204321, 'data', 001, 'cb100', 'จันทร์', '08:00:00', '09:30:00'),
+(204451, 'algro', 001, 'cb200', 'อังคาร', '11:00:00', '12:30:00'),
+(204361, 'se', 001, 'cb300', 'พฤหัสบดี', '09:30:00', '11:00:00'),
+(204321, 'data', 001, 'cb100', 'ศุกร์', '08:00:00', '09:30:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject`
+--
+
+CREATE TABLE `subject` (
+  `id` int(6) DEFAULT NULL,
+  `sec` int(3) UNSIGNED ZEROFILL NOT NULL,
+  `name_subject` varchar(30) DEFAULT NULL,
+  `name_teacher` varchar(30) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`id`, `sec`, `name_subject`, `name_teacher`) VALUES
+(204321, 001, 'data', NULL),
+(204451, 001, 'algro', NULL),
+(204361, 001, 'se', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usertable`
+--
+
+CREATE TABLE `usertable` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `usertable`
+--
+
+INSERT INTO `usertable` (`id`, `name`, `email`, `password`) VALUES
+(1, 'Prem Sugigran', 'laboona17@gmail.com', '$2y$10$fJsXa/jP2UiQf9xzFDf7BunPSzzLB2ILqwIg5m4IOae3SfjtULUsO'),
+(2, 'Tonmai Napat', 'Prem_GOD@hotmail.co.th', '$2y$10$R.4iUpOQ0rZcua11nWWm7uPFVr9U3u/1KIA.AHehTuyMuS3R2ybm.');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `usertable`
+--
+ALTER TABLE `usertable`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `usertable`
+--
+ALTER TABLE `usertable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
